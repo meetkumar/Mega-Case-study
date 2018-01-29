@@ -42,3 +42,19 @@ for i, x in enumerate(X):
          markeredgewidth = 2)
 show()
 
+# Finding the frauds
+mappings = som.win_map(X)
+a = np.array(mappings[(8,6)]) #Co-ordinates will keep on changing every execution so better to run with python IDE
+b = np.array(mappings[(1,2)])
+c = np.array(mappings[(1,7)])
+frauds = np.concatenate((a, b, c), axis = 0)
+frauds = sc.inverse_transform(frauds)
+
+#Going from Unsupervised Learning to super vised learning
+
+#Creating the matrix of features
+customers = dataset.iloc[:, 1:].values
+
+#Creating the dependent Variable
+is_fraud = np.zeros(len(dataset))
+
